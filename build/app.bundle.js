@@ -82,22 +82,18 @@
 	'use strict';
 	
 	Object.defineProperty(exports, '__esModule', {
-	  value: true
+	    value: true
 	});
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 	
-	var _templateObject = _taggedTemplateLiteral(['\n      fragment on Faction {\n        ships(first: 10) {\n          edges {\n            node {\n              id,\n              name,\n            },\n          },\n        },\n      }\n    '], ['\n      fragment on Faction {\n        ships(first: 10) {\n          edges {\n            node {\n              id,\n              name,\n            },\n          },\n        },\n      }\n    ']);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 	
 	var _react = __webpack_require__(2);
 	
@@ -108,52 +104,92 @@
 	var _reactRelay2 = _interopRequireDefault(_reactRelay);
 	
 	var App = (function (_React$Component) {
-	  _inherits(App, _React$Component);
+	    _inherits(App, _React$Component);
 	
-	  function App() {
-	    _classCallCheck(this, App);
+	    function App() {
+	        _classCallCheck(this, App);
 	
-	    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).apply(this, arguments);
-	  }
-	
-	  _createClass(App, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2['default'].createElement(
-	        'div',
-	        null,
-	        _react2['default'].createElement(
-	          'h1',
-	          null,
-	          'Ship list'
-	        ),
-	        _react2['default'].createElement(
-	          'ul',
-	          null,
-	          this.props.rebels.ships.edges.map(function (edge) {
-	            return _react2['default'].createElement(
-	              'li',
-	              null,
-	              edge.node.name,
-	              ' (ID: ',
-	              edge.node.id,
-	              ')'
-	            );
-	          })
-	        )
-	      );
+	        _get(Object.getPrototypeOf(App.prototype), 'constructor', this).apply(this, arguments);
 	    }
-	  }]);
 	
-	  return App;
+	    _createClass(App, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2['default'].createElement(
+	                'div',
+	                null,
+	                _react2['default'].createElement(
+	                    'h1',
+	                    null,
+	                    'Ship list'
+	                ),
+	                _react2['default'].createElement(
+	                    'ul',
+	                    null,
+	                    this.props.rebels.ships.edges.map(function (edge) {
+	                        return _react2['default'].createElement(
+	                            'li',
+	                            { key: edge.node.id },
+	                            edge.node.name,
+	                            ' (ID: ',
+	                            edge.node.id,
+	                            ')'
+	                        );
+	                    })
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return App;
 	})(_react2['default'].Component);
 	
 	exports['default'] = _reactRelay2['default'].createContainer(App, {
-	  fragments: {
-	    viewer: function viewer() {
-	      return _reactRelay2['default'].QL(_templateObject);
+	    fragments: {
+	        rebels: function rebels() {
+	            return (function () {
+	                var GraphQL = _reactRelay2['default'].QL.__GraphQL;
+	                return new GraphQL.QueryFragment('App', 'Faction', [new GraphQL.Field('ships', [new GraphQL.Field('edges', [new GraphQL.Field('node', [new GraphQL.Field('id', null, null, null, null, null, {
+	                    parentType: 'Ship',
+	                    requisite: true
+	                }), new GraphQL.Field('name', null, null, null, null, null, {
+	                    parentType: 'Ship'
+	                })], null, null, null, null, {
+	                    parentType: 'ShipEdge',
+	                    rootCall: 'node',
+	                    pk: 'id',
+	                    requisite: true
+	                }), new GraphQL.Field('cursor', null, null, null, null, null, {
+	                    parentType: 'ShipEdge',
+	                    generated: true,
+	                    requisite: true
+	                })], null, null, null, null, {
+	                    parentType: 'ShipConnection',
+	                    plural: true
+	                }), new GraphQL.Field('pageInfo', [new GraphQL.Field('hasNextPage', null, null, null, null, null, {
+	                    parentType: 'PageInfo',
+	                    generated: true,
+	                    requisite: true
+	                }), new GraphQL.Field('hasPreviousPage', null, null, null, null, null, {
+	                    parentType: 'PageInfo',
+	                    generated: true,
+	                    requisite: true
+	                })], null, null, null, null, {
+	                    parentType: 'ShipConnection',
+	                    generated: true,
+	                    requisite: true
+	                })], null, [new GraphQL.Callv('first', new GraphQL.CallValue(10))], null, null, {
+	                    parentType: 'Faction',
+	                    connection: true,
+	                    nonFindable: true
+	                }), new GraphQL.Field('id', null, null, null, null, null, {
+	                    parentType: 'Faction',
+	                    generated: true,
+	                    requisite: true
+	                })]);
+	            })();
+	        }
 	    }
-	  }
 	});
 	module.exports = exports['default'];
 
@@ -41588,15 +41624,11 @@
 	
 	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 	
-	var _templateObject = _taggedTemplateLiteral(['\n      query {\n        rebels\n      }\n    '], ['\n      query {\n        rebels\n      }\n    ']);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 	
 	var _reactRelay = __webpack_require__(158);
 	
@@ -41614,8 +41646,15 @@
 	  _createClass(_default, null, [{
 	    key: 'queries',
 	    value: {
-	      viewer: function viewer() {
-	        return _reactRelay2['default'].QL(_templateObject);
+	      rebels: function rebels() {
+	        return (function () {
+	          var GraphQL = _reactRelay2['default'].QL.__GraphQL;
+	          return new GraphQL.Query('rebels', null, [new GraphQL.Field('id', null, null, null, null, null, {
+	            parentType: 'Faction',
+	            generated: true,
+	            requisite: true
+	          })], null, null, 'AppHomeRoute');
+	        })();
 	      }
 	    },
 	    enumerable: true

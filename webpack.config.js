@@ -20,12 +20,12 @@ module.exports = {
         {
             test: /\.jsx?$/,
             loader: 'babel',
-            query: {stage: 0},
+            query: {stage: 0, plugins: path.join(__dirname, 'relayPlugin')},
             exclude: /node_modules/
         },
         { test: /\.css$/, loader: "style-loader!css-loader" },
         // inline base64 URLs for <=8k images, direct URLs for the rest
-        {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
+        {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
     ]
   }
 };
