@@ -17,4 +17,9 @@ setup(
         'wsgi_graphql',
         'webob'
     ],
+    entry_points={
+        'console_scripts': [
+            'relaypy_server = relaypy.server:server',
+        ]
+    },
 )
