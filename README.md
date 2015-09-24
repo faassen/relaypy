@@ -31,3 +31,6 @@ You can then go to http://localhost:5000/graphql and do queries, for instance::
 ```
 http://localhost:5000/graphql?query={rebels{ships{edges{node{id,%20name}}}}}
 ```
+
+You can also go to http://localhost:5000/graphiql to see a graphical
+user interface that lets you explore the schema.
