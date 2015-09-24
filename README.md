@@ -1,8 +1,9 @@
-# GraphQL Relay server in Python
+# Demo of GraphQL Relay server in Python
 
 This uses graphqllib, graphql-relay and wsgi_graphql to implement a
-Relay-compliant GraphQL server in Python. It exposes the Relay "Star Wars"
-model.
+Relay-compliant GraphQL server in Python. It exposes the Relay "Star
+Wars" model. It is an example of how you can use
+(wsgi_graphql)[https://github.com/faassen/wsgi_graphql].
 
 To build it you can cobble it together using `pip` yourself, but beware you
 need to do some checkouts first of the various projects as there are
