@@ -4,4 +4,4 @@ bin/
 develop-eggs/
 src/
 node_modules
-
+*.egg-info

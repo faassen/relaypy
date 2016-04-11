@@ -12,9 +12,8 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
-        'graphqllib',
         'graphql-relay',
-        'wsgi_graphql',
+        'graphql-wsgi',
         'webob'
     ],
     entry_points={

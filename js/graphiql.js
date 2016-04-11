@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import GraphiQL from 'graphiql';
 import fetch from 'isomorphic-fetch';
 import 'babel/polyfill';
@@ -12,4 +13,4 @@ function graphQLFetcher(graphQLParams) {
   }).then(response => response.json());
 }
 
-React.render(<GraphiQL fetcher={graphQLFetcher} />, document.body);
+ReactDOM.render(<GraphiQL fetcher={graphQLFetcher} />, document.body);

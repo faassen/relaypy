@@ -1,4 +1,4 @@
-from wsgi_graphql import wsgi_graphql
+from graphql_wsgi import graphql_wsgi
 from wsgiref.simple_server import make_server
 from webob.dec import wsgify
 from webob.exc import HTTPNotFound
@@ -7,7 +7,7 @@ from .schema import StarWarsSchema
 
 
 def server():
-    graphql = wsgi_graphql(StarWarsSchema)
+    graphql = graphql_wsgi(StarWarsSchema)
     static = DirectoryApp('build', index_page=None)
     index = FileApp('index.html')
     graphiql = FileApp('graphiql.html')
