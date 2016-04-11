@@ -297,3 +297,4 @@ StarWarsSchema = GraphQLSchema(
     query=queryType,
     mutation=mutationType
 )
+
